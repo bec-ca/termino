@@ -1,0 +1,131 @@
+cpp_library:
+  name: cell
+  sources: cell.cpp
+  headers: cell.hpp
+
+cpp_library:
+  name: constants
+  headers: constants.hpp
+
+cpp_library:
+  name: element
+  sources: element.cpp
+  headers: element.hpp
+  libs: termino
+
+cpp_library:
+  name: element_with_position
+  sources: element_with_position.cpp
+  headers: element_with_position.hpp
+  libs: element
+
+cpp_library:
+  name: grid
+  sources: grid.cpp
+  headers: grid.hpp
+  libs:
+    element
+    element_with_position
+
+cpp_library:
+  name: key
+  sources: key.cpp
+  headers: key.hpp
+  libs:
+    /bee/format
+    constants
+    key_code
+
+cpp_library:
+  name: key_code
+  headers: key_code.hpp
+
+cpp_library:
+  name: key_predicate
+  sources: key_predicate.cpp
+  headers: key_predicate.hpp
+  libs: key
+
+cpp_library:
+  name: label
+  sources: label.cpp
+  headers: label.hpp
+  libs: element
+
+cpp_library:
+  name: margin
+  sources: margin.cpp
+  headers: margin.hpp
+  libs:
+    element
+    element_with_position
+
+cpp_library:
+  name: shelf
+  sources: shelf.cpp
+  headers: shelf.hpp
+  libs:
+    element
+    element_with_position
+
+cpp_library:
+  name: size
+  headers: size.hpp
+
+cpp_library:
+  name: stack
+  sources: stack.cpp
+  headers: stack.hpp
+  libs:
+    element
+    element_with_position
+
+cpp_library:
+  name: termino
+  sources: termino.cpp
+  headers: termino.hpp
+  libs:
+    /bee/bytes_buffer
+    /bee/error
+    /bee/file_descriptor
+    /bee/format_vector
+    cell
+    constants
+    key
+    key_code
+    size
+
+cpp_library:
+  name: termino_app
+  sources: termino_app.cpp
+  headers: termino_app.hpp
+  libs:
+    /async/async
+    /async/deferred_awaitable
+    /async/scheduler_context
+    /async/task
+    element
+    termino
+
+cpp_binary:
+  name: termino_example
+  libs: termino_example_main
+
+cpp_library:
+  name: termino_example_main
+  sources: termino_example_main.cpp
+  libs:
+    /bee/error
+    /bee/file_reader
+    /bee/format
+    /bee/string_util
+    /command/command_builder
+    /command/group_builder
+    termino
+
+cpp_library:
+  name: text_box
+  sources: text_box.cpp
+  headers: text_box.hpp
+  libs: element
+
